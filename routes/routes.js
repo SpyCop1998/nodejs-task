@@ -14,13 +14,13 @@ module.exports = (app) => {
     app.delete('/deleteUser', jwtAuth, User.deleteUser)
 
     app.post('/userLogin', User.loginUser)
-    app.get('/userLogout', jwtAuth, User.logoutUser)
+    //app.get('/userLogout', jwtAuth, User.logoutUser)
 
     //group routes
 
     app.post('/createGroup', jwtAuth, Group.createGroup)
     app.delete('/deleteGroup', jwtAuth, Group.deleteGroup)
-    app.get('/searchGroup', jwtAuth, Group.searchGroup)
+    app.get('/searchGroup/:pattern', jwtAuth, Group.searchGroup)
     app.post('/addUserToGroup', jwtAuth, Group.addUserToGroup)
 
 

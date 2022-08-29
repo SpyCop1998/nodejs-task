@@ -11,6 +11,10 @@ const groupSchema = mongoose.Schema(
         },
         user: {
             type: Array
+        },
+        groupName: {
+            type: String,
+            unique: true
         }
     },
     {
