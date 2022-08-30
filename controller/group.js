@@ -9,10 +9,11 @@ const createGroup = async (req, res) => {
         await Group.createGroup(req.params.userId, req.body.groupName)
         return res.send('success')
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 const addUserToGroup = async (req, res) => {
+    //check if the user exists or not
     try {
         if (!lodash.get(req, 'body.groupId', false)) {
             return res.send('invalid input')
@@ -24,7 +25,7 @@ const addUserToGroup = async (req, res) => {
         await Group.addUserToGroup(req.body.userId, req.body.groupId)
         return res.send('success')
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 const searchGroup = async (req, res) => {
@@ -35,7 +36,7 @@ const searchGroup = async (req, res) => {
         const result = await Group.searchGroup(req.params.pattern)
         return res.send(result)
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 const deleteGroup = async (req, res) => {
@@ -43,10 +44,10 @@ const deleteGroup = async (req, res) => {
         if (!lodash.get(req, 'body.groupId', false)) {
             return res.send('invalid input')
         }
-        await Group.deleteGroup(req.params.groupId)
+        await Group.deleteGroup(req.body.groupId)
         return res.send('success')
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 

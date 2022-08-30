@@ -23,11 +23,6 @@ const searchGroup = async (pattern) => {
     const groups = await Group.find(
         {
             groupName: new RegExp(pattern, 'i'),
-        },
-        {
-            user: 1,
-            createdBy: 0,
-            groupName: 1
         }
     )
 

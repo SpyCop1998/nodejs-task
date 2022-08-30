@@ -14,7 +14,7 @@ const sendMessage = async (req, res) => {
         await Message.sendMessage(messageData.groupId, req.params.userId, messageData.message)
         return res.send('success')
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 const likeMessage = async (req, res) => {
@@ -25,10 +25,10 @@ const likeMessage = async (req, res) => {
 
         const messageData = req.body
 
-        await Message.sendMessage(messageData.messageId, req.params.userId)
+        await Message.likeMessage(messageData.messageId, req.params.userId)
         return res.send('success')
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 

@@ -6,7 +6,7 @@ const mongoose = require('mongoose'),
 const groupSchema = mongoose.Schema(
     {
         createdBy: {
-            type: objectId,
+            type: String,
             require: true
         },
         user: {

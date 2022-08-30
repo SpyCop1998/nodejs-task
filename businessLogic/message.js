@@ -1,10 +1,10 @@
 const Message = require('../models/message'),
     lodash = require('lodash');
 
-const sendMessage = async (grouId, userId, message) => {
+const sendMessage = async (grouId, userId, messageStr) => {
     const message = new Message({
         sentBy: userId,
-        message,
+        message:messageStr,
         grouId
     })
     await message.save()

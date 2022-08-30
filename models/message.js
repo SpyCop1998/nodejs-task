@@ -6,7 +6,7 @@ const mongoose = require('mongoose'),
 const messageSchema = mongoose.Schema(
     {
         sentBy: {
-            type: objectId,
+            type: String,
             require: true
         },
         message: {
@@ -18,7 +18,7 @@ const messageSchema = mongoose.Schema(
             require: true
         },
         groupId: {
-            type: objectId,
+            type: String,
             require: true
         }
     },

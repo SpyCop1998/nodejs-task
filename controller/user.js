@@ -25,16 +25,19 @@ const createUser = async (req, res) => {
         )
         return res.send(token)
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 
 const deleteUser = async (req, res) => {
     try {
-        await User.deleteUser(req.params.userId)
+        if (!lodash.get(req, 'body.userId', false)) {
+            return res.send('invalid input')
+        }
+        await User.deleteUser(req.body.userId)
         return res.send('success')
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 
@@ -59,7 +62,7 @@ const editUser = async (req, res) => {
         return res.send('success')
 
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 
@@ -89,7 +92,7 @@ const loginUser = async (req, res) => {
         return res.send(token)
 
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 
@@ -116,7 +119,7 @@ const createAdmin = async (req, res) => {
         )
         return res.send(token)
     } catch (error) {
-        return res.send('error')
+        return res.status(500).send('error')
     }
 }
 
